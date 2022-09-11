@@ -1,0 +1,12 @@
+# ninja log v5
+2	281	1662453349755048382	CMakeFiles/ffmpegClionC__.dir/Log/LogStudy.cpp.o	78b089d5ffb26997
+1	337	1662540325719146226	CMakeFiles/ffmpegClionC__.dir/FileList/fileListRead.cpp.o	745ac5581cb19eb1
+3	342	1662569055057667635	CMakeFiles/ffmpegClionC__.dir/adts/adts.cpp.o	33f699e255af0033
+0	36	1662657314394488975	build.ninja	a39b3f997f871d20
+1	360	1662575691859405463	CMakeFiles/ffmpegClionC__.dir/extractAudio/extractAudio.cpp.o	658fb73a27ef5854
+1	65	1662566938131736071	CMakeFiles/ffmpegClionC__.dir/videoMetaData/metaInfo.cpp.o	1740cf5fd857466f
+0	5	0	clean	3c8e6cc385ee00ba
+2	328	1662453195766320043	CMakeFiles/ffmpegClionC__.dir/cmdOverlay.cpp.o	c2e6fd52ef9db433
+1	323	1662540500621226847	CMakeFiles/ffmpegClionC__.dir/main.cpp.o	92b402bf16070f9c
+87	141	1662575737039729825	ffmpegClionC__	a3887de847adda6d
+1	86	1662575736984022865	CMakeFiles/ffmpegClionC__.dir/extractVideo/extractVideo.cpp.o	e3630097b09ff69b

@@ -1,0 +1,3 @@
+/Users/xiaohanchen/Desktop/ffmpegClionC++/video_frame/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/xiaohanchen/Desktop/ffmpegClionC++/video_frame/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/xiaohanchen/Desktop/ffmpegClionC++/video_frame/cmake-build-debug/CMakeFiles/ffmpegClionC__.dir
