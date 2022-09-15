@@ -7,10 +7,12 @@ extern "C"{
     #include "libavutil/log.h"
     #include "libavdevice/avdevice.h"
 }
+#include "iostream"
+using namespace std;
 
 void capture_audio() ;
 
-int main(){
+int mainCaptureAudio(){
     capture_audio();
     return 0;
 }
@@ -42,12 +44,12 @@ void capture_audio() {
     }
 
     //写入文件 w：写入 b：二进制 +：文件不存在就自动创建
-    char *out = "/Users/mac/Downloads/my_av_base.pcm";
+    char *out = "/Users/xiaohanchen/Desktop/my_av_base.pcm";
     FILE *outfile = fopen(out, "wb+");
 
     av_init_packet(&pkt);
     //读取音频数据
-    while ((ret = av_read_frame(fmt_ctx, &pkt)) == 0  && count++ < 500) {
+    while ((ret = av_read_frame(fmt_ctx, &pkt)) >= 0  && count++ < 50000) {
 
         //写入文件
         fwrite(pkt.data, pkt.size, 1, outfile);
@@ -63,7 +65,7 @@ void capture_audio() {
 
     //关闭设备
     avformat_close_input(&fmt_ctx);
-
+    cout << "" << endl;
     av_log(NULL, AV_LOG_DEBUG, "finish!\n");
 }
 

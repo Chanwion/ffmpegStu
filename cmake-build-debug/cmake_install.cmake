@@ -1,4 +1,4 @@
-# Install script for directory: /Users/xiaohanchen/Desktop/ffmpegClionC++/video_frame
+# Install script for directory: /Users/xiaohanchen/Desktop/ffmpegStu
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/xiaohanchen/Desktop/ffmpegClionC++/video_frame/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/xiaohanchen/Desktop/ffmpegStu/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

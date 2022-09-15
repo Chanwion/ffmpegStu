@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja /Users/xiaohanchen/Desktop/ffmpegClionC++/video_frame
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja /Users/xiaohanchen/Desktop/ffmpegStu
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/xiaohanchen/Desktop/ffmpegClionC++/video_frame/cmake-build-debug
+-- Build files have been written to: /Users/xiaohanchen/Desktop/ffmpegStu/cmake-build-debug
