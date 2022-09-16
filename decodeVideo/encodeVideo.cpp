@@ -41,7 +41,7 @@ int main(){
     int ret = 0;
     avdevice_register_all(); // 设备注册
     AVCodecContext *codec_ctx = NULL;
-    AVFrame *frame = create_frame();
+    AVFrame *frame = create_frame();      // 用于接受编码需要的yuv格式的avframe
 
     AVFormatContext *format_ctc = open_dev();    // 打开摄像头
     if(!format_ctc){
@@ -56,37 +56,35 @@ int main(){
     open_decoder(&codec_ctx);
 
     // 摄像头数据采集
-    AVPacket *pkt = av_packet_alloc();
+    AVPacket *pkt = av_packet_alloc();      // 从摄像头读到的都是一个个package，哪怕他是原始的数据
     if(pkt == NULL){
         cout << "Failed to alloc avpacket" << endl;
         exit(1);
     }
+    // 这个用来接受编码后的包，编码一般发送的是显示的avframe接受到的是avpackage，package有个特点就是他的data数据不分层，即不是一个数组
+    // 而frame中的数据是一个分层的形式，如yuv，rgb即三层
     AVPacket *encodePkt = av_packet_alloc();
     if(!encodePkt){
         cout << "Failed to alloc encode packet" << endl;
         exit(1);
     }
     while( true){
-        ret = av_read_frame(format_ctc, pkt);
+        ret = av_read_frame(format_ctc, pkt);    // 从摄像头这个上下文读到数据，取到一个个包
+        // 一个问题，可能设备还没准备好，针对mac的情况
         if(ret == -35){
             usleep(100);
             continue;
         }
+        // 得到满足编码条件的格式，avframe（yuv420p）
         yuyv422ToYuv420p(&frame,pkt);
-        //写入文件
-//        fwrite(frame->data, 1, V_WIDTH*V_HEIGHT*1.5, outfile);
-//        fwrite(pkt->data, 1, V_WIDTH*V_HEIGHT*2, outfile);
-
-
-        // frame 的数据写入，不能像packet一样，要根据自己的yuv通道去根据yuv420p一样写入
+        // frame 的数据写入，不能像packet一样，要根据自己的yuv通道去根据yuv420p一样写入 -> 得到原始的yuv文件
         fwrite(frame->data[0], 1, V_WIDTH*V_HEIGHT, outfile);
         fwrite(frame->data[1], 1, V_WIDTH*V_HEIGHT / 4, outfile);
         fwrite(frame->data[2], 1, V_WIDTH*V_HEIGHT / 4, outfile);
-        frame->pts = count++;
-        fflush(outfile);
 
-//        void encode(AVCodecContext *codec,AVFrame *srcFrame,AVPacket *dstPacket,FILE *encodeFile);
-        // 编码
+        fflush(outfile);
+        // 编码器编码需要依赖pts数据,如果缺失会导致编码失败或者编码图像极差
+        frame->pts = count++;
         encode(codec_ctx,frame,encodePkt,encodeFile);
 
         cout << " frame  " << count << endl;
@@ -95,8 +93,10 @@ int main(){
         }
         av_packet_unref(pkt);
     }
+    // 结束时再调用一次，可以让编码器回到要结束了，编码器会清空缓存
+    // 同时发现如果没有这个执行，可能存在还在编码的情况，程序就退出了
+    encode(codec_ctx,NULL,encodePkt,encodeFile);
 
-//    avcodec_send_frame
     return 0;
 }
 
@@ -112,19 +112,14 @@ AVFormatContext* open_dev(){
 
     int ret = 0;
     char errors[1024] = {0, };
-
     //ctx
     AVFormatContext *fmt_ctx = NULL;
     AVDictionary *options = NULL;
     av_dict_set(&options,"framerate","30",0);
-//    av_dict_set(&options, "video_size", V_WIDTH+"x"+V_HEIGHT, 0);
     av_dict_set(&options, "video_size", "1280x720", 0);
     av_dict_set(&options, "pixel_format", "yuyv422", 0);
-//    av_dict_set(&options, "pixel_format", AV_PIX_FMT_UYVY422, 0);
-
     //[[video device]:[audio device]]
     const char *devicename = "0";
-
     //get format
     AVInputFormat *iformat = av_find_input_format("avfoundation");
 
@@ -181,12 +176,10 @@ void open_decoder(AVCodecContext **codec_ctx){
     if(codec_ctx == NULL){
         cout << "Could not allocate video codec context" << endl;
         exit(0);
-        return;
     }
 //    //SPS PPS
     (*codec_ctx)->gop_size     = 200;      //GOP最大差距
     (*codec_ctx)->max_b_frames = 1;           // b帧多增加编码时间，实时通信要求这个没有b帧
-//
     // 视频基本长宽，必设
     (*codec_ctx)->width        = V_WIDTH;
     (*codec_ctx)->height       = V_HEIGHT;
@@ -211,8 +204,6 @@ void open_decoder(AVCodecContext **codec_ctx){
     // GOP
     (*codec_ctx)->gop_size = 20;
     (*codec_ctx)->keyint_min = 25; // option
-
-
 
     //设置输入YUV格式
     (*codec_ctx)->pix_fmt = AV_PIX_FMT_YUV420P;

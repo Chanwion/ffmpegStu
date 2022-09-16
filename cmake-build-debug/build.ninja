@@ -121,8 +121,8 @@ build CMakeFiles/ffmpegClionC__.dir/extractVideo/extractVideo.cpp.o: CXX_COMPILE
   OBJECT_DIR = CMakeFiles/ffmpegClionC__.dir
   OBJECT_FILE_DIR = CMakeFiles/ffmpegClionC__.dir/extractVideo
 
-build CMakeFiles/ffmpegClionC__.dir/decodeVideo/decodeVideo.cpp.o: CXX_COMPILER__ffmpegClionC___Debug /Users/xiaohanchen/Desktop/ffmpegStu/decodeVideo/decodeVideo.cpp || cmake_object_order_depends_target_ffmpegClionC__
-  DEP_FILE = CMakeFiles/ffmpegClionC__.dir/decodeVideo/decodeVideo.cpp.o.d
+build CMakeFiles/ffmpegClionC__.dir/decodeVideo/encodeVideo.cpp.o: CXX_COMPILER__ffmpegClionC___Debug /Users/xiaohanchen/Desktop/ffmpegStu/decodeVideo/encodeVideo.cpp || cmake_object_order_depends_target_ffmpegClionC__
+  DEP_FILE = CMakeFiles/ffmpegClionC__.dir/decodeVideo/encodeVideo.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++14
   INCLUDES = -I/opt/homebrew/Cellar/ffmpeg/4.4_2/include
   OBJECT_DIR = CMakeFiles/ffmpegClionC__.dir
@@ -150,7 +150,7 @@ build CMakeFiles/ffmpegClionC__.dir/decodeVideo/demo.cpp.o: CXX_COMPILER__ffmpeg
 #############################################
 # Link the executable ffmpegClionC__
 
-build ffmpegClionC__: CXX_EXECUTABLE_LINKER__ffmpegClionC___Debug CMakeFiles/ffmpegClionC__.dir/main.cpp.o CMakeFiles/ffmpegClionC__.dir/cmdOverlay.cpp.o CMakeFiles/ffmpegClionC__.dir/recoderAndEncoder/demo.cpp.o CMakeFiles/ffmpegClionC__.dir/videoMetaData/metaInfo.cpp.o CMakeFiles/ffmpegClionC__.dir/extractAudio/extractAudio.cpp.o CMakeFiles/ffmpegClionC__.dir/adts/adts.cpp.o CMakeFiles/ffmpegClionC__.dir/extractVideo/extractVideo.cpp.o CMakeFiles/ffmpegClionC__.dir/decodeVideo/decodeVideo.cpp.o CMakeFiles/ffmpegClionC__.dir/decodeVideo/convert.cpp.o CMakeFiles/ffmpegClionC__.dir/decodeVideo/demo.cpp.o
+build ffmpegClionC__: CXX_EXECUTABLE_LINKER__ffmpegClionC___Debug CMakeFiles/ffmpegClionC__.dir/main.cpp.o CMakeFiles/ffmpegClionC__.dir/cmdOverlay.cpp.o CMakeFiles/ffmpegClionC__.dir/recoderAndEncoder/demo.cpp.o CMakeFiles/ffmpegClionC__.dir/videoMetaData/metaInfo.cpp.o CMakeFiles/ffmpegClionC__.dir/extractAudio/extractAudio.cpp.o CMakeFiles/ffmpegClionC__.dir/adts/adts.cpp.o CMakeFiles/ffmpegClionC__.dir/extractVideo/extractVideo.cpp.o CMakeFiles/ffmpegClionC__.dir/decodeVideo/encodeVideo.cpp.o CMakeFiles/ffmpegClionC__.dir/decodeVideo/convert.cpp.o CMakeFiles/ffmpegClionC__.dir/decodeVideo/demo.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/Cellar/ffmpeg/4.4_2/lib  -lswscale  -lswresample  -lavcodec  -lavutil  -lavdevice  -lavfilter  -lavformat
   LINK_PATH = -L/opt/homebrew/Cellar/ffmpeg/4.4_2/lib

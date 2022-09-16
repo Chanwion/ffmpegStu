@@ -21,7 +21,7 @@ add_executable(ffmpegClionC__
 #        captureAudio/captureAudio.cpp
         recoderAndEncoder/demo.cpp
 
-        videoMetaData/metaInfo.cpp extractAudio/extractAudio.cpp adts/adts.cpp header/adts.h extractVideo/extractVideo.cpp extractVideo/demuxer_video.h decodeVideo/decodeVideo.cpp decodeVideo/convert.cpp decodeVideo/convert.h decodeVideo/demo.cpp)
+        videoMetaData/metaInfo.cpp extractAudio/extractAudio.cpp adts/adts.cpp header/adts.h extractVideo/extractVideo.cpp extractVideo/demuxer_video.h decodeVideo/encodeVideo.cpp decodeVideo/convert.cpp decodeVideo/convert.h decodeVideo/demo.cpp)
 
 target_link_libraries(
         ffmpegClionC__
