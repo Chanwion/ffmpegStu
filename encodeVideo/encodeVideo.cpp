@@ -37,7 +37,7 @@ AVFormatContext* open_dev();
 static
 void encode(AVCodecContext *codec,AVFrame *srcFrame,AVPacket *dstPacket,FILE *encodeFile);
 
-int main(){
+int mainEncodeVideo(){
     int ret = 0;
     avdevice_register_all(); // 设备注册
     AVCodecContext *codec_ctx = NULL;
